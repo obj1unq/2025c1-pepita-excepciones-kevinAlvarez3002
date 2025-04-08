@@ -21,3 +21,17 @@ describe "Pepita, Pepon y Roque" {
     assert.equals(40, pepon.energia())
   }
 }
+
+describe "testeo de excepciones al volar" {
+  test "tanto pepon como pepita pueden volar 4" {
+    assert.doesNotThrowException({ pepon.volar(4) })
+    assert.doesNotThrowException({ pepita.volar(4) })
+  }
+  test "pepon no puede volar 6" {
+    assert.throwsException({pepon.volar(6)})
+  }
+  test "ambas aves no mpueden volar 100" {
+    assert.throwsException({ pepon.volar(100) })
+    assert.throwsException({ pepita.volar(100) })
+  }
+}
