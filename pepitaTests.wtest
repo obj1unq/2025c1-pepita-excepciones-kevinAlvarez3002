@@ -35,3 +35,17 @@ describe "testeo de excepciones al volar" {
     assert.throwsException({ pepita.volar(100) })
   }
 }
+describe "Que pasa con las cenas?"{
+  test "pepon debe comer balanceado"{
+    assert.throwsException({pepon.comer(manzana)})
+    assert.doesNotThrowException({pepon.comer(alpiste)})
+    assert.throwsException({pepon.comer(alpiste)})
+  }
+  test "roque no debe contar comidas que no fueron" {
+    roque.ave(pepon)
+    assert.equals(0, roque.cenas())
+    roque.alimentar(alpiste)
+    assert.throwsException({roque.alimentar(alpiste)})
+    assert.equals(1,roque.cenas())
+  }
+}

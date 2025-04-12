@@ -46,13 +46,21 @@ object manzana {
 
 object pepon {
 	var energia = 30
+	var ultimaComida = manzana
 	
 	method energia() = energia
 	
 	method energiaAportada(comida) = comida.energiaQueAporta() / 2
-	
+	method puedoComer(comida)= comida!=ultimaComida
+	method validarComer(comida){
+		if(not self.puedoComer(comida)){
+		self.error("tengo que comer balanceado")
+		}
+	}
 	method comer(comida) {
+		self.validarComer(comida)
 		energia = energia + self.energiaAportada(comida)
+		ultimaComida=comida
 	}
 	
 	method energiaParaVolar(distancia) = 20 + (2 * distancia)
@@ -72,7 +80,7 @@ object pepon {
 object roque {
 	var ave = pepita
 	var cenas = 0
-	
+	method cenas()=cenas
 	method ave(_ave) {
 		ave = _ave
 		cenas = 0
@@ -83,4 +91,5 @@ object roque {
 		cenas += 1
 	}
 }
+
 //documentacion para testear el commit en el nuevo navegador//documentacion para testear el commit en el nuevo navegador
